@@ -1,0 +1,168 @@
+<?php
+	/**
+	 * @var SearchFilter $filter
+	 * @var CActiveDataProvider $dp
+	 */
+
+	$this->pageTitle = "Поиск";
+?>
+<style type="text/css">
+#Filters {}
+#Filters .x {font-size:20px; cursor:pointer;}
+#FiltersContainer label, #Filters input {display:inline;}
+#FiltersContainer {margin:0 0 10px 0;}
+#FiltersContainer .f {margin:5px 0;}
+
+#FilterStock { margin:10px 0; display: none; }
+#FilterList li.used {display:none;}
+#FilterList li > a { cursor: pointer; }
+#FilterList li > div { display:none; }
+#Results { margin:10px 0;}
+</style>
+
+<script type="text/javascript">
+var S = {
+	init: function() {
+		$("#FilterList li > a").click(S.addFilter);
+		$("#FiltersContainer").delegate(".x", "click", S.removeFilter);
+		$("#catChooser").delegate("a.cat", "click", S.setCat);
+		S.checkSubmit();
+	},
+	chooseFilter: function() {
+		$("#FilterStock").toggle();
+		return false;
+	},
+	addFilter: function(e) {
+		e.preventDefault();
+
+		if($(this).attr("onclick")) return;
+		console.log("addFilter");
+
+		var $li = $(this).parent("li");
+		var $filter = $(this).next("div.f");
+
+		$filter.append("<span class='x' title='Убрать это условие'>&times;</span>").data("origin_li", $li).appendTo("#FiltersContainer");
+		$("input", $filter).focus();
+
+		$li.addClass("used");
+		$("#FilterStock").hide();
+		S.checkSubmit();
+	},
+	removeFilter: function(e) {
+		e.preventDefault();
+
+		var $filter = $(this).parent("div.f");
+		$(this).remove();
+		$li = $filter.data("origin_li");
+
+		$filter.appendTo($li);
+		$li.removeClass("used");
+		S.checkSubmit();
+	},
+	checkSubmit: function() {
+		if($("#FiltersContainer div.f").length) $("#Filters :submit").show();
+		else $("#Filters :submit").hide();
+	},
+	catChoose: function() {
+		console.log("catChoose");
+
+		$("#catChooser").load("/search/catalog?ajax=1", function() {
+			$(this).modal("show")
+		});
+	},
+	setCat: function(e) {
+		e.preventDefault();
+
+		var id, title;
+		var $a = $(this);
+		var $li = $("#f-cat");
+		var $filter = $("div.f", $li);
+
+		if(res = /\?cat=(\d+)/.exec($a.attr("href"))) {
+			id = res[1];
+		}
+		title = $a.text();
+
+		$("#dumb [name=cat]").val(id);
+		$(".name", $filter).html(title);
+		$("#catChooser").modal("hide");
+
+		$filter.append(" <span class='x' title='Убрать это условие'>&times;</span>").data("origin_li", $li);
+		$filter.appendTo("#FiltersContainer");
+
+		$li.addClass("used");
+		$("#FilterStock").hide();
+		S.checkSubmit();
+	}
+};
+$(S.init);
+</script>
+
+<h1>Поиск</h1>
+
+<form id="Filters" method="get" action="/search">
+	<div id="FiltersContainer">
+	<?php
+//		print_r($filter->attributes);
+		foreach($filter->attributes as $attr => $val) {
+			if(empty($val)) continue;
+			$html = $filter->getFilterHtml($attr);
+			if($html == "") continue;
+
+			echo "<div class='f' id='f-{$attr}'>";
+			echo $html;
+			echo " <span class='x' title='Убрать это условие'>&times;</span>";
+			echo "</div>";
+		}
+	?>
+	</div>
+
+	<button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Искать</button>
+</form>
+
+<a href="#" onclick="return S.chooseFilter()" class="ajax"><i class="icon-plus-sign"></i> Добавить условие</a>
+
+<div id="FilterStock">
+<form id="dumb" method="get" action="">
+	<ul id="FilterList">
+	<?php
+		foreach($filter->attributes as $attr => $val) {
+			if(!empty($val)) continue;
+			echo "<li>";
+			echo $filter->getFilterTitle($attr);
+			echo "<div class='f' id='f-{$attr}'>";
+			echo $filter->getFilterHtml($attr);
+			echo "</div>";
+			echo "</li>";
+		}
+	?>
+
+	</ul>
+</form>
+</div>
+
+<?php if($filter->doSearch): ?>
+<div id="Results">
+<?php
+	/** @var Book[] $book */
+	$books = $dp->getData();
+	if($dp->totalItemCount == 0) {
+		echo <<<HTML
+			<p class="alert alert-block alert-info">
+				Ничего не найдено.
+			</p>
+HTML;
+	} else {
+		echo "<ul>";
+		foreach($books as $book) {
+			echo "<li>";
+			echo $book->ahref;
+			echo "</li>";
+		}
+		echo "</ul>";
+	}
+?>
+
+</div>
+<?php endif; ?>
+<div id="catChooser" class="modal hide"></div>

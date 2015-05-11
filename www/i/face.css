@@ -1,0 +1,27 @@
+.Shaded {
+	background:#eee;
+	border:solid #ccc;
+	border-width:1px 0;
+	margin:15px 0;
+	padding:15px;
+}
+
+.SubLinks {
+	text-align:right;
+}
+
+#About {float:right; border:1px solid #bbe; background:#ddc; padding:7px; width:40%; margin:0px 10px;}
+#About h2 {margin-top:10px; border-bottom:1px dotted gray;}
+#About big {font-weight:bold; display:block; float:left; font-size:20px; margin:0px 3px 0 3px;}
+
+#Search_Top p {
+	line-height:200%;
+	text-align:center;
+}
+#Search_Top h1 {margin-bottom:15px;}
+
+#Anounces h1 {margin:0px; padding:0;}
+#Announces dl {margin:0 0 10px 20px; padding:0px;}
+#Announces dl dt {margin:10px 0 0 0; padding:0px;}
+#Announces dl dd {margin:3px 0 0 20px; padding:0 0 0 10px; border-left:2px solid #ccc;}
+

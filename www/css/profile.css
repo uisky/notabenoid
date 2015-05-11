@@ -1,0 +1,71 @@
+.profile-header-upic {
+	height:100%; text-align:center; position:relative;
+}
+.profile-header-upic img.upic {
+	display: block;
+	margin:10px auto 5px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.profile-header-upic a {
+	display:none;
+	font-size:11px;
+	text-decoration:underline;
+}
+.profile-header:hover .profile-header-upic a { display:inline; }
+
+#upic-modal form { margin:0; }
+#upic-modal p.i {text-align:center; margin:20px 0;}
+
+.personal td, .personal th {
+	vertical-align: top;
+	padding-bottom:15px;
+}
+
+.personal th {
+	text-align:left;
+	width:200px;
+}
+
+.personal td {
+	width:auto;
+}
+
+
+.marks-table {
+	position:relative;
+}
+.marks-table ul {
+	margin:0; padding:0;
+	list-style:none;
+}
+.marks-total {
+	margin:20px auto;
+	padding:20px;
+	font-size:15px;
+	text-align:center;
+	width:200px;
+	border:1px dashed #b0b0b0;
+	border-radius:20px;
+	background:#e0e0e0;
+	box-shadow:0px 0px 20px rgba(0, 0, 0, 0.3);
+}
+.marks-total strong {
+	font-size:18px;
+}
+.marks-table .marks-total-wrap {
+	position:absolute;
+	top:1000px;
+	width:100%;
+}
+.marks-table .marks-total {
+	margin:0 auto;
+	width:30px;
+	padding:30px;
+	border:5px solid #777;
+	border-radius:500px;
+	background:#e0e0e0;
+	font-size:20px;
+	font-weight:bold;
+	text-align:center;
+}

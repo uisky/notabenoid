@@ -1,0 +1,124 @@
+.translator {
+	width:100%;
+	margin:5px 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.translator > thead > tr > th {
+    background:#949494;
+    color:#fff;
+    padding:10px 3px;
+    border-bottom:2px solid black;
+}
+
+.translator > tbody > tr > td {
+	vertical-align:top;
+	padding:5px;
+	border-bottom:1px solid #777;
+}
+
+.translator td.n, .translator td.u {white-space: nowrap;}
+
+/* Номер или время */
+.translator td.n {
+    background:#CCDFE5;
+    font-size:9px;
+    line-height:10px;
+    color:#777;
+	min-width:14px;
+}
+.translator a.ord { color:#777; text-decoration:none; display: inline-block; font-size:11px; line-height: 14px;}
+.translator tr:hover a.ord {text-decoration: underline; color: black; }
+
+.translator          td.n a.b { display:inline-block; visibility: hidden; vertical-align:top; }
+.translator tr:hover td.n a.b,
+.translator          td.n a.set { visibility: visible;}
+
+/* Оригинал */
+.translator td.o { width:50%; }
+
+.translator          td.o a.e, .translator          td.o a.ctx { display:none; }
+.translator tr:hover td.o a.e, .translator tr:hover td.o a.ctx { display:inline; }
+
+/* Кнопки */
+.translator td.u {
+    background:#ddd;
+    font-size:11px;
+    text-align:center;
+    min-width:30px;
+}
+.translator td.u a {
+    color:red;
+    margin:0 0 4px 0;
+    letter-spacing: -1px;
+    display: inline-block;
+}
+.translator          td.u a.add { visibility:hidden; }
+.translator tr:hover td.u a.add { visibility:visible; }
+
+/* Перевод */
+.translator          td.t a.e, .translator          td.t a.x { display:none; margin: 0 5px; }
+.translator tr:hover td.t a.e, .translator tr:hover td.t a.x { display:inline; }
+
+.translator td.t { width:50%; }
+
+.translator td.t > div {
+    border-top:1px dotted #777;
+    padding:5px;
+    margin:0 0 5px;
+}
+.translator td.t > div.best .b {
+	font-weight: bold;
+}
+.translator td.t > div.deleting {
+    color:#777;
+    text-decoration: line-through;
+}
+.translator td.t > div:first-child { border-top:none; }
+.translator td.t > div:first-child { border-top:none; }
+
+.translator td.t div .rater {
+    display:block; float:right; margin-left:5px;
+}
+
+#form-tr { font-size:11px; }
+.translator td.t #tr-ccnt { float:right; }
+.translator td.t #tr-ccnt b {background: #949494; color:#fff; border-radius: 2px; font-weight:bold; padding: 1px 4px;}
+
+/* Комментарии */
+.cmt .loading {
+    color:#444;
+    background:#d0d0d0 url("/i/pacman-d0d0d0.gif") no-repeat center center;
+    height:200px;
+}
+
+tr.cmt td.b {
+    padding-right:50px !important;
+}
+
+
+/* Формы */
+.tr-editor form {margin:0}
+.tr-editor textarea {width:100%; height:50px;}
+
+.orig-editor form {margin:0}
+.orig-editor textarea {width:98%; height:50px;}
+
+/* Тулбарлар */
+#toolbar-main .pagination { margin-top:0; margin-bottom:0; }
+
+#progress-info {width:200px;}
+
+
+#filter-modal form {margin-bottom:0;}
+#filter-modal ul.options {list-style: none;}
+#filter-modal ul.options li {margin:10px 0;}
+
+#timeshift-modal form {margin-bottom:0;}
+#timeshift-modal div.advanced {display:none;}
+#timeshift-modal input[type=text] {width:120px;}
+
+/* Словарь в окошке */
+#Dict .editing .t {width:150px !important;}
+#Dict .editing button {font-size:11px; line-height: 16px; height: 25px;}

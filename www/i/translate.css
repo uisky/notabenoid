@@ -1,0 +1,153 @@
+.translator {
+	width:100%;
+	margin:5px 0;
+}
+.translator td {
+	vertical-align:top;
+	padding:5px;
+	border-bottom:1px solid #777;
+}
+.translator th {
+	background:#949494;
+	color:#fff;
+	padding:10px 3px;
+	border-bottom:2px solid black;
+}
+
+.translator .nothing_here td {
+	padding:50px;
+	text-align:center;
+	color:#777;
+}
+
+/* номер абзаца и примечания */
+.translator td.n, .translator td.c {
+	background:#ccdfe5;
+	text-align:right;
+	font-family:sans-serif;
+	font-size:10px;
+	white-space: nowrap;
+}
+.translator td.i {
+	font-size:10px;
+	color:gray;
+}
+.translator td.n {
+}
+.translator td.o {
+	width:50%;
+	font-family:Times New Roman, Times, serif;
+	font-size:14px;
+	padding:0 3px 0 6px;
+}
+.translator td.o small {
+	font-family:Tahoma; font-size:11px;
+	padding-left:20px;
+}
+.preview td.o {width:100%;}
+
+.translator td.tu {
+	background:#ddd;
+	width:30px;
+	white-space:nowrap;
+}
+.translator td.tu a {
+	display:block;
+	margin:0 0 5px 0;
+	color:red;
+}
+.translator td.tu a.tr {
+	font-weight:bold;
+	letter-spacing:-2px;
+}
+
+.translator td.t {
+	width:50%;
+}
+.translator td.t table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width:100%;
+}
+.translator td.t table td {
+	padding:2px 4px;
+	border:1px solid white;
+	background:#f0f0f0;
+}
+.translator td.t table td.v {
+	width:100%;
+}
+
+.translator td.rm {
+	text-align:center;
+	background:#777;
+	color:#fff;
+}
+
+#tr_form {
+	margin:0 0 5px 0;
+}
+#tr_form textarea {
+	background:#ff7;
+	overflow:auto;
+	width:100%;
+}
+.translator #VarEd {padding:2px 4px;}
+.translator #VarEd h2 {font-size:12px; font-weight:bold; margin:0 0 5px;}
+.translator #VarEd p {margin:5px 0; color:#a00; font-style:italic;}
+.translator #VarEd textarea {background:#fa7; overflow:auto; width:100%; }
+
+/* иконки в таблице - закладка, примечание */
+.translator img.bm, .translator img.notes {
+	cursor:pointer;
+	display:block;
+}
+
+
+#verse_menu {
+	position:absolute;
+
+	text-align:left;
+	border:1px solid black;
+	background:#f0f0f0;
+	padding:10px;
+	width:110px;
+	font-size:11px;
+}
+
+#Bookmark_set {
+	width:300px;
+}
+#Bookmark_set p {
+	margin:5px 0;
+}
+#Bookmark_set h5 {
+	margin:0 0 5px;
+	font-size:12px;
+	font-weight:bold;
+}
+
+
+#tab_dict {
+	height:280px;
+	overflow:auto;
+}
+
+/* Полоска навигации по книге */
+.BookNav {border-top:1px solid #929292; border-bottom:1px solid #929292; width:100%; border-collapse:collapse; border-spacing:0;}
+.BookNav td {white-space: nowrap; font-weight:bold; padding:7px 6px;}
+.BookNav td.t {white-space: normal; width:50%;} /* в чтении оригинала - название главы */
+.BookNav td.p {white-space: normal; width:50%; text-align:right;} /* в переводах - страницы */
+.BookNav td.p a {padding:0px 6px;}
+.BookNav td.p b {background:#000; color:#fff; padding:0px 6px;}
+.BookNav a.r {letter-spacing:-2px;}
+
+
+#tab_dict dl {margin:0; padding:0;}
+#tab_dict dt {font-weight:bold; margin:0; padding:0;}
+#tab_dict dd {margin:1px 0 8px 11px; padding:0;}
+
+#Translator .note {
+	margin-top:60px;
+	margin-bottom:60px;
+}

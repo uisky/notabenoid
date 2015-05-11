@@ -1,0 +1,7 @@
+* html #wrapper,
+* html #footer {
+	width: expression((documentElement.clientWidth||document.body.clientWidth)<1000?'1000px':'');
+}
+
+#LoginZone label.a { margin-top:15px; }
+#LoginZone input.f { margin-top:1px; }

@@ -1,0 +1,206 @@
+<script type="text/javascript">
+var S = {
+	topics_html: {<?php
+		$i = 0;
+		foreach(array_keys(Yii::app()->params["book_types"]) as $typ) {
+			if($i != 0) echo ",\n";
+			echo "{$typ}: \"";
+
+			if(is_array(Yii::app()->params["book_topics"][$typ])) {
+				echo addcslashes(
+					CHtml::checkBoxList(
+						"topics",
+						"",
+						Yii::app()->params["book_topics"][$typ],
+						array("checkAll" => "все", "separator" => " ", "template" => "<span>{input} {label}</span>")
+					),
+					"\"\'"
+				);
+			}
+
+			echo "\"";
+			$i++;
+		}
+	?>},
+	typ_switch: function() {
+		var typ = $("#SearchFilter_typ").val();
+		var html = S.topics_html[typ];
+		if(!typ || html == "") {
+			$("#SearchFilter_topics").hide();
+		} else {
+			$("#SearchFilter_topics").show();
+		}
+		$("#SearchFilter_topics_boxes").html(S.topics_html[typ]);
+	}
+}
+</script>
+
+<h1>Переводим вместе</h1>
+
+<?php
+	$form = $this->beginWidget("CActiveForm", array(
+		"id" => "form-filter",
+		"method" => "get",
+		"action" => "/search/"
+	));
+	CHtml::$afterRequiredLabel = "";
+
+?>
+<table class="filter">
+<tr>
+	<th><?php echo $form->labelEx($filter, "typ"); ?></th>
+	<th><?php echo $form->labelEx($filter, "s_lang"); ?></th>
+	<th><?php echo $form->labelEx($filter, "t_lang"); ?></th>
+	<th style="width:100%"><?php
+		echo $form->labelEx($filter, "t");
+	?></th>
+	<th><?php
+		echo $form->checkBox($filter, "t_descr");
+		echo $form->labelEx($filter, "t_descr");
+	?></th>
+	<th></th>
+</tr>
+<tr>
+	<td>
+		<?php
+			$types = Yii::app()->params["book_types"];
+			$types[""] = "что угодно";
+			echo $form->dropDownList($filter, "typ", $types, array("onchange" => "S.typ_switch()"));
+		?>
+	</td>
+	<td>
+		<select name="SearchFilter[s_lang]" id="SearchFilter_s_lang">
+			<option value="0">любой</option>
+			<?php
+				echo Yii::app()->langs->options(Langs::FORM_INF, $filter->s_lang);
+			?>
+		</select>
+	</td>
+	<td>
+		<select name="SearchFilter[t_lang]" id="SearchFilter_t_lang">
+			<option value="0">любой</option>
+			<?php
+				echo Yii::app()->langs->options(Langs::FORM_INF, $filter->t_lang);
+			?>
+		</select>
+	</td>
+	<td colspan="2">
+		<?php echo $form->textField($filter, "t", array("style" => "width:100%")); ?>
+	</td>
+	<td>
+		<?php echo CHtml::submitButton("Искать"); ?>
+	</td>
+</tr>
+</table>
+<?php
+	$topics = Yii::app()->params["book_topics"][$filter->typ];
+	if(!is_array($topics)) {
+		echo "<table class='filter' id='SearchFilter_topics' style='display:none;'>";
+		echo "<tr><th><label>Разделы:</label></th>";
+		echo "<td id='SearchFilter_topics_boxes'></td>";
+		echo "</tr></table>";
+	} else {
+?>
+<table class="filter" id="SearchFilter_topics">
+<tr>
+	<th><label>Разделы:</label></th>
+	<td id="SearchFilter_topics_boxes">
+		<?php
+			echo $form->checkBoxList($filter, "topics", $topics, array("checkAll" => "все", "separator" => " ", "template" => "<span>{input} {label}</span>"));
+		?>
+	</td>
+</tr>
+</table>
+<?php
+	}
+?>
+<table class="filter">
+<tr>
+	<th><label>Открыт для:</label></th>
+	<td>
+		<?php
+			echo $form->checkBox($filter, "open_read");
+			echo $form->labelEx($filter, "open_read");
+			foreach(array("open_gen", "open_tr") as $k) {
+				echo $form->checkBox($filter, $k, array("onclick" => "if($(this).attr('checked')) $('#SearchFilter_open_read').attr('checked', 'checked')"));
+				echo $form->labelEx($filter, $k);
+				echo " ";
+			}
+		?>
+	</td>
+	<td>
+		<?php
+			echo $form->checkBox($filter, "not_empty");
+			echo $form->labelEx($filter, "not_empty");
+		?>
+	</td>
+</tr>
+</table>
+
+<?php
+	$this->endWidget();
+?>
+
+
+<?php
+	function render_access($data) {
+		$html = "";
+		foreach(array("ac_read", "ac_gen", "ac_tr") as $k) $html .= "<i class='{$k} {$data->$k}'></i>";
+
+		return $html;
+	}
+
+	$this->widget("zii.widgets.grid.CGridView", array(
+		"dataProvider" => $dp,
+		"template" => "{summary}\n{pager}\n{items}\n{pager}",
+		"columns" => array(
+			array(
+				"header" => "Создано",
+				"value" => '$data->cdate',
+				"type" => "raw",
+			),
+			array(
+				"header" => "Владелец",
+				"value" => '$data->owner->ahref',
+				"type" => "raw",
+			),
+			array(
+				"header" => "Оригинал",
+				"value" => 'Yii::app()->langs->inf($data->s_lang)',
+				"type" => "raw",
+			),
+			array(
+				"header" => "Перевод",
+				"value" => 'Yii::app()->langs->inf($data->t_lang)',
+				"type" => "raw",
+			),
+			array(
+				"header" => "Название",
+				"value" => '$data->ahref',
+				"type" => "raw",
+				"cssClassExpression" => "t",
+			),
+			array(
+				"header" => "Частей",
+				"name" => "n_chapters",
+				"cssClassExpression" => "n",
+			),
+			array(
+				"header" => "Фрагментов",
+				"name" => "n_verses",
+				"cssClassExpression" => "n",
+			),
+			array(
+				"header" => "Готово",
+				"value" => '$data->n_verses == 0 ? "&mdash;" : ($data->n_verses == $data->d_vars ? "<b>100%</b>" : sprintf("%0.2f%%", $data->d_vars / $data->n_verses * 100))',
+				"type" => "raw",
+				"cssClassExpression" => "n",
+			),
+			array(
+				"header" => "Доступ",
+				"value" => 'render_access($data)',
+				"type" => "raw",
+			),
+		)
+	));
+?>

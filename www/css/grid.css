@@ -1,0 +1,76 @@
+.grid-view-loading {
+	background:url("/i/loading.gif") no-repeat;
+}
+
+.grid-view {
+	padding: 15px 0;
+}
+
+.grid-view table.items {
+	margin:10px 0;
+	background: white;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.grid-view table.items th, .grid-view table.items td {
+	padding:3px 10px;
+	border-bottom:1px solid #ccc; border-right:1px solid #ccc; 
+	white-space:nowrap;
+}
+.grid-view table.items th {
+	text-align: center;
+	font-weight: bold;
+}
+.grid-view table.items th a { color: #000; text-decoration: none; }
+.grid-view table.items th a:hover { text-decoration:underline; }
+
+.grid-view table.items th a.asc {
+	background:url("/i/up.gif") right center no-repeat;
+	padding-right: 10px;
+}
+.grid-view table.items th a.desc {
+	background:url("/i/down.gif") right center no-repeat;
+	padding-right: 10px;
+}
+
+.grid-view table.items th.t, .grid-view table.items td.t { width:100%; white-space:normal; }	/* заголовок */
+.grid-view table.items th.m, .grid-view table.items td.m { width:100%; }						/* ??? */
+.grid-view table.items td.n { text-align:right; }												/* число */
+.grid-view table.items td.e {background:#ddd; border-color:#fff;} 								/* кнопки */
+.grid-view table.items th.e {border-color:#fff;}  												/* кнопки */
+
+.grid-view table.items tr.selected { background: #619baf; color:#fff; }
+.grid-view table.items tr.selected a { color: #ff7; }
+.grid-view table.items tr:hover { background: #ADD3E0; }
+
+.grid-view table.items tr.editing { background: url("/i/bg_slashed1.gif") #fff; }
+.grid-view table.items tr.editing td {
+	border-top:3px solid black; border-bottom:3px solid black; border-right:none; border-left: none;
+}
+
+
+.grid-view .button-column { text-align: center; width: 60px; }
+.grid-view .checkbox-column { width: 15px; }
+.grid-view .summary {
+	margin: 0 0 5px 0;
+	text-align: right;
+	float:right;
+}
+
+.grid-view .pager {
+	margin: 5px 0 0 0;
+}
+
+.grid-view .empty {
+	font-style: italic;
+	display:block;
+	margin:50px 0;
+	text-align:center;
+}
+
+.grid-view .filters input,
+.grid-view .filters select {
+	width: 100%;
+	border: 1px solid #ccc;
+}

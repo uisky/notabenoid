@@ -1,0 +1,43 @@
+.jquery-input-default-wrapper{
+	display: inline-block;
+	overflow: hidden; 
+	position: relative;
+}
+
+*+html .jquery-input-default-wrapper{
+	display: inline;
+	zoom: 1;
+}
+
+.jquery-input-default-wrapper input,
+.jquery-input-default-wrapper textarea{
+	background: url('blank.gif');
+	position: relative;
+	z-index:1;
+	margin: 0;
+	vertical-align: top;
+}
+
+.jquery-input-default-wrapper .jquery-input-default-placeholder{
+	z-index:0;
+	position: absolute;
+	color:#bbb;
+	top:5px; left:5px;
+}
+
+.jquery-input-default-wrapper.jquery-input-default-focused .jquery-input-default-placeholder{
+	opacity:0.5;
+	filter: alpha(opacity = 50);
+}
+
+.jquery-input-default-wrapper.jquery-input-default-filled .jquery-input-default-placeholder{
+	display: none;
+}
+
+.jquery-input-default-wrapper.jquery-input-default-input{
+	white-space: nowrap;
+}
+
+.jquery-input-default-wrapper.jquery-input-default-textarea{
+	white-space: normal;
+}

@@ -1,0 +1,695 @@
+html {height: 100%}
+body {
+	font: 12px Tahoma;
+	height: 100%;
+	margin:0;
+	padding:0;
+}
+
+/**********************************************************************************************************************************************************
+ *	Common Elements
+ **********************************************************************************************************************************************************/
+a img {border:none;}
+form {margin:0;}
+table {border-spacing: 0; border-collapse: collapse;}
+.W {width:100%;}
+.hint {color:gray;}
+.warn {border:1px solid #a00; background:#ff7; padding:7px; font-weight:bold; margin:5px 0;}
+.note {border:1px solid #929292; background:#f7f0dc; padding:7px; font-weight:bold; margin:5px 200px;}
+.disallowed { color:#bbb; } /* Вместо ссылки, если по этой ссылке ходить нельзя */
+abbr {border-bottom:1px dotted #070; cursor:help;}
+
+a {color:#619baf; text-decoration:none;}
+a:hover {text-decoration:underline;}
+a.r {color:red;}
+a.ajax {border-bottom:1px dashed gray;}
+a.ajax:hover {border:none;}
+a.user {color:red; text-decoration:underline;}
+.moder a {color:red;} /* ссылки на модераторские функции */
+a.act {color:#4C4B9B;}	/* импортировать, править профиль */
+.disabled {color:#777; cursor:not-allowed;}
+
+h1,h2,h3,h4,h5,h6 {font-family:Arial,Tahoma,sans-serif; font-weight:normal;}
+h1 {font-size:24px; margin:0 0 7px -2px; letter-spacing:-1px;}
+h2 {font-size:20px; margin:0 0 7px 0; letter-spacing:-1px; color:#444;}
+h3 {font-size:16px;}
+h4 {font-size:12px;}
+
+/* Иконки прав доступа */
+i.ac_read, i.ac_gen, i.ac_rate, i.ac_comment, i.ac_tr,   i.ac_chap_edit, i.ac_book_edit, i.ac_announce, i.ac_membership, i.ac_blog_r, i.ac_blog_c, i.ac_blog_w {
+	display:inline-block; width:20px; height:11px;
+}
+i.ac_read, i.ac_read.a {background:url("/i/ac.gif") no-repeat 0px 0px}
+i.ac_read.g {background:url("/i/ac.gif") no-repeat -20px 0px}
+i.ac_read.m {background:url("/i/ac.gif") no-repeat -40px 0px}
+i.ac_read.o {background:url("/i/ac.gif") no-repeat -60px 0px}
+i.ac_gen, i.ac_gen.a {background:url("/i/ac.gif") no-repeat 0px -11px}
+i.ac_gen.g {background:url("/i/ac.gif") no-repeat -20px -11px}
+i.ac_gen.m {background:url("/i/ac.gif") no-repeat -40px -11px}
+i.ac_gen.o {background:url("/i/ac.gif") no-repeat -60px -11px}
+
+i.ac_rate, i.ac_rate.a {background:url("/i/ac.gif") no-repeat 0px -22px}
+i.ac_rate.g {background:url("/i/ac.gif") no-repeat -20px -22px}
+i.ac_rate.m {background:url("/i/ac.gif") no-repeat -40px -22px}
+i.ac_rate.o {background:url("/i/ac.gif") no-repeat -60px -22px}
+
+i.ac_comment, i.ac_comment.a {background:url("/i/ac.gif") no-repeat 0px -33px}
+i.ac_comment.g {background:url("/i/ac.gif") no-repeat -20px -33px}
+i.ac_comment.m {background:url("/i/ac.gif") no-repeat -40px -33px}
+i.ac_comment.o {background:url("/i/ac.gif") no-repeat -60px -33px}
+
+i.ac_tr, i.ac_tr.a {background:url("/i/ac.gif") no-repeat 0px -44px}
+i.ac_tr.g {background:url("/i/ac.gif") no-repeat -20px -44px}
+i.ac_tr.m {background:url("/i/ac.gif") no-repeat -40px -44px}
+i.ac_tr.o {background:url("/i/ac.gif") no-repeat -60px -44px}
+
+i.ac_blog_r, i.ac_blog_c, i.ac_blog_w, i.ac_announce, i.ac_membership, i.ac_chap_edit, i.ac_book_edit { background:#999; }
+
+i.a {background-position: 0px 0;}
+i.g {background-position: -20px 0;}
+i.m {background-position: -40px 0;}
+i.o {background-position: -60px 0;}
+
+/* Формы */
+.form {width:740px; margin:20px 0;}
+.form .row, .form .row2 {
+	position:relative;
+	padding:5px; margin:0 0 20px 0;
+	border:1px dashed transparent; border-radius:5px;
+}
+.form .row:hover, .form .row2:hover {
+	border-color:#ccc;
+}
+.form .row {clear:both;}
+.form .row2 {width:330px; float:left; margin-right:20px;}
+
+.form .hint {margin:0; padding:0;}
+.form p.hint {position:absolute; bottom:5px; right:5px;}
+.form div.hint {}
+
+.form .error {color:red;}
+.form .errorMessage {color:#900;}
+.form .captcha {display:block; cursor:pointer;}
+
+.form label.l {display:block; margin:0 0 2px 18px; font-weight:bold; }		/* лейбл под инпутом */
+.form .wide {width:700px;}
+
+fieldset {
+	border:1px solid #a79e88;
+	border-left:7px solid #53482f;
+	border-radius:5px;
+	padding:10px 20px;
+}
+legend {
+	font-weight:bold;
+	padding:0 10px;
+}
+fieldset.list p {
+	margin:5px 10px;
+	padding:0;
+	width:200px;
+	float:left;
+}
+
+input[type="text"], input[type="password"], textarea, select {
+	background:#f5f1e4;
+	border-bottom:1px solid #a79e88;
+	border-left:7px solid #53482f;
+	border-right:none;
+	border-top:none;
+	border-radius:5px;
+	font-family:"Times New Roman",Times,serif;
+	font-size:16px;
+}
+
+input[type="text"], input[type="password"] {
+	width:300px;
+	height:28px;
+	padding:0 10px;
+}
+textarea {
+	padding:10px;
+}
+select {
+	height:28px;
+	padding:0 0 0 10px;
+	border:none;
+}
+input[type="submit"], input[type="button"] {
+	background:#f5f1e4;
+	border:3px solid #53482f;
+	border-radius:10px;
+	height:38px;
+	padding:0 20px;
+	font-family:Tahoma;
+	font-size:11px;
+	font-weight:bold;
+}
+input[type="submit"]:hover, input[type="button"]:hover {
+	background:#a79e88;
+}
+input[type="submit"]:active, input[type="button"]:active {
+	background:#53482f;
+	color:white;
+}
+input[type="submit"].inline, input[type="button"].inline {
+	height:28px;
+}
+
+
+/* Фильтр таблиц */
+.filter { margin-right:180px; }
+.filter td, .filter th { text-align:left; padding:10px 20px 0 0; }
+.filter th { white-space:nowrap;}
+.filter span {white-space:nowrap;}
+
+.errorSummary, .flash_error, .flash_ok {
+	width:600px;
+	margin:20px auto 10px;
+	padding:20px;
+	border-radius:20px;
+	box-shadow:7px 7px 30px rgba(0,0,0,0.2);
+}
+.errorSummary p, .flash_error p, .flash_ok p {
+	margin:0;
+	padding:15px 20px;
+	font-weight:bold;
+}
+.errorSummary, .flash_error { background:#ff0; border:10px dotted #c40000; }
+.flash_ok { background:#C7FFC7; border:10px solid #7B8BA1; }
+.errorSummary ul {margin:0; padding:0 0 0 35px;}
+.errorSummary li {margin:5px 0;}
+
+table.ed td,table.ed th {padding:12px 12px 0px 0px;}
+table.ed th {text-align:left; white-space:nowrap;}
+
+/* Аватарки */
+.upic.active {cursor:pointer;}
+
+#userinfo_win {
+	position:absolute;
+	top:76px;
+	left:42px;
+	border:1px solid black;
+	padding:10px;
+	background:#777;
+}
+/* Рейтинговалка */
+em {white-space:nowrap; background:#ccc; color:#fff; font-style:normal; font-weight:bold; padding:2px 4px; margin:0px; cursor:pointer; display:block;}	/* Основной стиль em-элемента */
+em.voted { background-color:#770; } /* Стиль em-элемента, для которого в данный момент производится голосование ( отправлен запрос к серверному скрипту) */
+#vote_box { background-color:#fff; position: absolute; z-index: 1000; border:1px solid #777;} /* Стиль панели голосования */
+#vote_box em { background-color:#f00; color:#fff; border:1px solid white; padding:2px 4px;} /* Стиль кнопки голосования */
+#vote_box em.hovered { background-color:#707; } /* Стиль кнопки голосования, на которую наведен курсор мыши */
+#vote_box_bg { position: absolute; top: 0; left: 0; z-index: 999;} /* Стиль подложки */
+#vote_box table { width: auto !important;}
+#vote_box table td {padding:0px; margin:0px;}
+
+#Pages a, p.pages a { padding: 5px; }
+#Pages a:hover, p.pages a:hover: { background:black; color:white; }
+#Pages b, p.pages b { padding: 5px; background:black; color:white; }
+
+/* Таблица с нижними серыми границами ячеек - оглавление перевода, etc. */
+table.L {width:100%;}
+table.L th, table.L td {padding:3px 10px; border-bottom:1px solid #ccc; border-right:1px solid #ccc;  white-space:nowrap;}
+table.L td {background:#fff;}
+table.L td.e {background:#ddd; border-right:0; border-left:1px solid #fff; border-bottom:1px solid #fff;}
+table.L td.t {width:100%; white-space:normal; text-align:left;}
+table.L .nb {font-weight:normal; white-space:nowrap;}
+
+table.p4 td, table.p4 th {padding:4px;}
+
+/* горизонтальное меню */
+ul.hmenu {text-align:center;}
+ul.hmenu li {display:inline; padding:3px 10px; list-style:none;}
+
+/* Сообщения, ошибки */
+#ErrContainer {text-align:center; margin:0 0px 15px 0;}
+#ErrContainer .box {border:2px solid black; text-align:left; width:300px; margin:0 auto;}
+#ErrContainer .head {background:#f00; color:#ff0; font-weight:bold; padding:10px; border-bottom:1px solid black;}
+#ErrContainer .x {float:right; cursor:pointer;}
+#ErrContainer .body {background:#fff; color:#000; padding:10px; text-align:left;}
+#ErrContainer ul {margin:0; padding:0;}
+#ErrContainer li {margin:0 10px; padding:0;}
+#MsgContainer {text-align:center; margin:0 0px 15px 0;}
+#MsgContainer .box {border:2px solid black; text-align:left; width:300px; margin:0 auto;}
+#MsgContainer .head {background:#619baf; color:#ff0; font-weight:bold; padding:10px; border-bottom:1px solid black;}
+#MsgContainer .x {float:right; cursor:pointer;}
+#MsgContainer .body {background:#fff; color:#000; padding:10px; text-align:left;}
+#MsgContainer ul {margin:0; padding:0;}
+#MsgContainer li {margin:0 10px; padding:0;}
+div.debug {border:1px solid black; background:#fec; color:black; padding:7px; margin:4px 0px;}
+
+/* Всплывающие окошки */
+.subwindow {
+	position:absolute;
+	border:1px solid #bbe;
+	padding:10px;
+	background:#eee;
+	display:none;
+	text-align:left;
+}
+.subwindow ul {
+	margin:0;
+	padding:0 0 0 15px;
+}
+.subwindow ul li {
+	margin:0;
+	padding:0;
+}
+
+.help_popup {
+	position:absolute;
+	width:200px;
+	padding:15px 15px 15px 48px;
+	background:url('/i/help_bg.gif') no-repeat 7px center #bbb398;
+	border:1px solid #7d7866;
+	white-space:normal;
+	text-align:left;
+	display:none;
+}
+.help_popup p.close {
+	text-align:center;
+	margin:15px 0 0;
+	padding:0;
+}
+.help_popup p.close a {
+	color:black;
+	text-decoration:underline;
+}
+
+#RatesList {
+	position: absolute;
+	width:300px;
+	padding:15px;
+	background:#a0abba;
+	color:black;
+	margin-top:8px;
+}
+#RatesList .arr {
+	display:block;
+	position:absolute;
+	top:-7px;
+	right:20px;
+}
+#RatesList table {
+	border-collapse:collapse;
+	border-spacing:0;
+	width:100%;
+}
+#RatesList table td, #RatesList table th {
+	width:50%;
+	padding:5px 20px !important;
+}
+#RatesList table td {}
+#RatesList table th {}
+#RatesList table td.minus {border-right:1px solid #444;}
+#RatesList table th.minus {border-right:1px solid #fff;}
+
+#RatesList p {
+	text-align:center;
+	margin:10px 0 0;
+}
+#RatesList p a {
+	color:#000;
+	text-decoration:underline;
+}
+
+
+/* Большое окно */
+div.win {
+	position:absolute;
+	display:none;
+	top:150px; left:100px;
+	width:700px; height:400px;
+	background:#eee; border:2px solid black; z-index:7;
+}
+div.win div.caption {
+	background:#619baf;
+	color:white; font-weight:bold;
+	padding:6px 3px;
+	height:13px;
+}
+div.win div.caption div.x {float:right; color:white; cursor:pointer;}
+div.win iframe {
+	position:relative;
+	border:0;
+	width:100%;
+	height:375px;
+	margin:0px; padding:0px;
+}
+
+#WinBody {padding:10px;}
+body.win {background:#eee;}
+
+/* Табы */
+.tabs_holder {}
+.tabs_header {
+	margin:0;
+	padding:0;
+	z-index:0;
+}
+.tabs_header li {
+	margin:0 1px 0 0;
+	height:14px;
+	padding:5px 10px 0;
+	float:left;
+	background:url("/i/tab_bg_off.gif") top right;
+	list-style:none;
+
+	color:#fff;
+	font-family:Tahoma,sans-serif;
+	font-size:10px;
+	font-weight:bold;
+
+}
+.tabs_header li a {
+	color:#fff;
+}
+.tabs_header li.on {
+	height:16px;
+	padding:3px 10px 0;
+	background-image: url("/i/tab_bg_on.gif");
+}
+.tabs_header li.on a {
+	color:#000;
+}
+.tab {
+	border:1px solid #929292;
+	clear:both;
+	display:none;
+	padding:8px;
+	background:#fff;
+}
+.tab.on {
+	display:block;
+}
+
+/* Подсказка, инструменты */
+.sr .hint, .sr .tools {
+	position:relative;
+	padding:15px;
+	border:1px solid #929292;
+	background:#fff;
+	margin:19px 0 40px 0;
+	color:black;
+	font-size:11px;
+}
+.sr h5 {
+	position:absolute;
+	top:-20px;
+	margin:0;
+	height:16px;
+	padding:3px 20px 0 10px;
+	background: url("/i/tab_bg_on.gif") top right;
+
+	color:white;
+	font:10px Tahoma, sans-serif;
+	font-weight: bold;
+	text-align:right;
+
+}
+.sr .tools ul, .sr .tab ul {margin:5px 0; padding:0 0 0 16px;}
+.sr .tools ul li, .sr .tab ul li {margin:0; padding:0;}
+.sr .tools ul li.cur, .sr .tab ul li.cur {background:#000; font-weight:bold;}
+.sr .tools ul li.cur a, .sr .tab ul li.cur a {color:white; text-decoration:none;}
+
+.sr .hint p {
+	margin:0 0 10px;
+}
+
+.sr h4 {
+	margin:10px 0 5px;
+	font-weight:bold;
+	font-size:11px;
+}
+
+/* В левой колонке всякие сводки */
+dl.info {margin:0; padding:0;}
+dl.info dt {color:gray;}
+dl.info dd {font-weight:bold; margin:0 0 7px 0; padding: 0 0 7px 10px; border-bottom:1px solid #e7e7e7;}
+dl.info .more_btn {font-weight: normal; color:gray; margin:5px 0 0;}
+dl.info .more {margin:5px 0 0; font-weight: normal;}
+dl.info table.t td {padding:2px; border-bottom:1px dotted gray; vertical-align:bottom;}
+dl.info table.t td.d {text-align:right; font-weight:bold;}
+
+
+/* Комментарии */
+#Comments {}
+#Comments .thread {margin-left:20px;}
+#Comments > .thread {margin-top:15px; border-top:1px solid gray;}
+#Comments .comment {
+	position:relative;
+	border:1px solid gray; border-width:0 1px 0 1px;
+}
+#Comments .comment .content {
+	position:relative; background:#f5f5f5; padding:8px;
+}
+#Comments .comment .meta {
+	position:relative; background:#e5e5e5; 	 padding:2px 5px;
+	border-bottom:1px solid gray;
+	font-size:11px;
+}
+#Comments #cmt_0_btn {display:none; text-align:center;}
+#Comments .new .content {background:#EFE7C2; border-color:#000; border-width:0 2px 0 2px;}
+#Comments .new .meta {background:#CFC69B; border-color:#000; border-width:0 2px 2px 2px;}
+
+#Comments .highlighted {border:3px solid black;}
+#Comments .deleting, #Comments .deleted, #Comments .deleting .content, #Comments .deleting .meta {background:#d0d0d0;}
+#Comments .deleted {padding:10px; border-bottom-width:1px;}
+#Comments .deleted p {text-align:center; color:#777; margin:10px 0;}
+
+#Comments #cmt_0 {border-bottom:1px solid gray;}
+#Comments #cmt_0 .comment {padding:5px 0;}
+#Comments #cmt_0 .row {padding:10px 40px 5px 10px;}
+#Comments #cmt_0 textarea {
+	width:100%;
+	height:150px;
+}
+
+#Comments p.x {position:absolute; left:-35px; top:10px; width:30px; height:20px; text-align:center;}
+#Comments p.del {background:#ccc; padding:4px; font-size:10px;}
+#Comments #cmt_replyform {padding:5px 30px; background:#f1e9e3; border:1px solid black;}
+
+
+
+
+/**********************************************************************************************************************************************************
+ *	Layout
+ **********************************************************************************************************************************************************/
+#wrapper {
+	width: 100%; min-width: 1000px;
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+}
+
+
+
+#header {
+	height: 160px;
+	position: relative;
+	font-size:11px;
+}
+#header .logo {
+	position: absolute;
+	left: 46px;
+	top: 30px;
+}
+#header .toplinks {
+	height: 30px;
+	padding:12px 12px 0 12px;
+	text-align: right;
+}
+#header .toplinks a {font-size:10px; color:black; text-decoration:none; padding:0 7px; white-space:nowrap;}
+#header .toplinks a:hover {text-decoration:underline;}
+
+#SiteSearch {color:#777;}
+#SiteSearch .f, #SiteSearch .b {
+	height:17px; border:1px solid black; border-radius:0px; font-family:Tahoma,sans-serif; font-size:12px; 
+}
+#SiteSearch .f {width:400px; padding:0px; background:#fff;}
+#SiteSearch .b {background:#e0e0e0; font-size:10px; font-weight:normal; height:20px; margin-right:20px;}
+
+#header .head1 {
+	height:45px;
+	margin:13px 0 0 175px;
+	border-bottom:1px solid #e0e0e0;
+}
+#header .head1 #MyThings {
+	position:absolute;
+	bottom:60px; right:0;
+	width:207px; height:20px;
+	padding:10px 0 0 10px;
+	background:#f5f5f5 url('/i/pl_hat_r.gif') no-repeat;
+}
+
+#LoginZone {font-weight:bold; padding:10px 0 0 8px;}
+#LoginZone label, #LoginZone p {
+	display:block;
+	float:left;
+	margin:0 5px 0 0;
+}
+#LoginZone label.a { margin-top:17px; }
+#LoginZone p { margin-top:19px; }
+#LoginZone input.f, #LoginZone input.b {
+	font-family:Tahoma;
+	font-size:10px;
+	border:1px solid #b0b0b0;
+	border-radius:0;
+	background:#f5f5f5;
+	height:14px;
+	padding:0px 2px;
+}
+#LoginZone input.f {
+	display:block;
+	width:76px;
+	margin:4px 0 0 0;
+}
+#LoginZone input.b { width:50px; height:16px;}
+
+
+
+
+#header .head2 {
+	margin:22px 0 0 175px;
+	height:36px;
+	border-bottom:1px solid #e0e0e0;
+}
+#header .head2 ul {margin:0; padding:0; }
+#header .head2 li {display:inline; margin:0; padding:0 12px; border-right:1px solid #000;}
+#header .head2 li.last {border-right:none;}
+#header .head2 a { font-weight:bold; color:black; text-decoration:none; white-space:nowrap; }
+#header .head2 a:hover { text-decoration:underline; }
+#header .head2 li.active a {color:red;}
+
+
+#middle {
+	width: 100%;
+	padding: 0 0 88px;
+	height: 1%;
+}
+#middle:after {
+	content: '.';
+	display: block;
+	clear: both;
+	visibility: hidden;
+	height: 0;
+}
+#container {
+	width: 100%;
+	float: left;
+	background:url('/i/bg_right.gif') right repeat-y;
+}
+#content {
+	padding: 20px 290px 20px 40px;
+	position:relative;
+}
+#content.single {
+	padding-right:40px;
+}
+/* Sidebar Right
+-----------------------------------------------------------------------------*/
+.sr {
+	position: relative;
+	float: left;
+	width: 250px;
+	margin-right: -3px;
+	margin-left: -270px;
+	padding:20px 20px 20px 0;
+}
+
+
+/* Footer
+-----------------------------------------------------------------------------*/
+#footer {
+	clear:both;
+	position:relative;
+	min-width: 1000px;
+	margin: -88px auto 0;
+	height: 87px;
+	background:url('/i/bg_lager.gif') repeat-x #d7d7d7;
+	border-top:1px solid #949494;
+	color:#949494;
+}
+#footer .counters {
+	position:absolute;
+	margin:25px 17px;
+}
+#footer .imprint {
+	font-weight:bold;
+	position:absolute;
+	margin-top:15px;
+	right:17px;
+	border-left:3px solid #a4a4a4;
+	padding:0 0 2px 5px;
+}
+#footer .imprint a {color:#949494; text-decoration:none;}
+#footer .imprint a:hover {text-decoration:underline; color:#000;}
+
+
+
+
+/* Попапы */
+#MyBooks {
+	width:300px;
+	right:80px;
+	top:40px;
+	z-index:7;
+}
+#MyBooks p {
+	text-align:center;
+	margin:5px 0 0;
+}
+#MyBooks p a {
+	color:#000;
+	text-decoration:underline;
+}
+
+#Bookmarks {
+	top:40px;
+	right:100px;
+	width:300px;
+	height:300px;
+	overflow:auto;
+	z-index:7;
+}
+
+
+
+
+/* Блог */
+.post {
+	margin:40px 0;
+}
+
+.post h2 {margin:10px 0;}
+.post .body {margin:10px 10px;}
+.post .img {margin:10px 10px;}
+.post .img img {border:1px solid #777;}
+.post .info {
+	background:#eee;
+	border-bottom:1px dashed #777;
+	padding:5px;
+	font-size:11px;
+}
+.post .info .author {}
+.post .info .date {}
+.post .info .tools {float:right; margin-right:50px;}
+.post .info .cmt {float:right; width:170px; text-align:right;}
+.post .info .cmt .new {color:#c00; font-weight:bold;}
+
+
+/*.
+post {margin-bottom:15px;}
+.post h1 {font-size:18px; margin:0 0 5px 0;}
+.post .body {margin:10px 0; font-family:Times New Roman,Times,serif; font-size:14px;}
+.post .info {background:#eee; border-bottom:1px dotted gray; width:100%;}
+.post .info td {padding:4px;}
+.post .info td.u {text-align:center;}
+.post .info td.c {text-align:right;}
+.post .info td.c a.nc {color:black; text-decoration:none;}
+.post .info td.c a.nwc {color:red; font-weight:bold;}
+*/
+
+
+table.ohmEditor td {padding:4px 0 4px 4px;}

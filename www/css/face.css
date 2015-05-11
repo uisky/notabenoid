@@ -1,0 +1,61 @@
+.bimg {
+	height:50px; width:50px; border-radius: 3px;
+	background:#f0f0f0 no-repeat center center;
+}
+.links {
+	text-align:right;
+	font-size:11px;
+}
+.links a {color:#c00;}
+h2 .links { float:right; }
+
+h2 {position:relative;}
+h2 .cog {
+	display:block;
+	position:absolute;
+	right:0; bottom:0;
+}
+
+#f-hot {}
+#f-hot ul.imged {list-style:none; margin: 0;}
+#f-hot ul.imged li { clear: both; min-height:50px; margin:10px 0; }
+#f-hot ul.imged li .bimg { float: left; }
+#f-hot ul.imged li p { margin-left:60px; }
+#f-hot ul.imged li p.title {font-size:13px; font-weight:bold;}
+#f-hot ul.imged li p.info {font-size:11px; line-height: 100%; margin-bottom: 9px;}
+#f-hot ul.imged li:hover p.info { border-bottom: 1px dotted #bbb; margin-bottom: 8px;}
+#f-hot ul.imged li p.info .r {float:right;}
+
+#f-about p, #f-about .hero li {font-size:11px;}
+#f-about .hero {
+	border: 1px solid #ccc;
+	border-radius: 20px;
+	background:#f0f0f0;
+	padding:10px 30px 18px 0;
+	box-shadow: rgba(0,0,0,.12) -5px 5px 30px;
+	text-align: justify;
+}
+#f-about .hero h3 { padding-left:30px; }
+#f-about .hero p { margin-left:30px; }
+#f-about .hero ol {margin-left:45px;;}
+#f-about .hero ol li {}
+noindex:-o-prefocus, #f-about .hero ol li {
+	text-align:left;
+}
+
+#f-search-top {
+	margin:40px 0;
+	padding:0 30px;
+	background:#f0f0f0;
+	border:solid #ccc;
+	border-width:1px 0;
+}
+#f-search-top .cloud {
+	line-height:200%;
+	text-align:center;
+}
+
+#f-blog ul {list-style: none; padding: 0; margin: 0;}
+#f-blog ul li {margin: 0 0 10px;}
+#f-blog ul li .c {float: right;}
+#f-blog ul li p {font-size:11px; color:#777;}

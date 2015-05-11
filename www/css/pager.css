@@ -1,0 +1,30 @@
+
+ul.yiiPager {
+	border:0;
+	margin:0 0 10px 0;
+	padding:0;
+	line-height:100%;
+	display:inline;
+}
+
+ul.yiiPager li { display:inline; }
+
+ul.yiiPager .page a { font-weight:normal; }
+ul.yiiPager a:link, ul.yiiPager a:visited {
+	font-weight:bold;
+	padding:1px 2px;
+	text-decoration:none;
+}
+
+
+ul.yiiPager a:hover { background:#ccc; }
+
+ul.yiiPager .selected a {
+	background:#619baf;
+	color:#fff;
+	font-weight:bold;
+}
+
+ul.yiiPager .hidden a { color:#ccc; }
+
+ul.yiiPager .first, ul.yiiPager .last {	letter-spacing: -2px; }
