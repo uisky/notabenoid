@@ -36,7 +36,7 @@
 			location / {
 				try_files $uri $uri/ /index.php?$args;
 			}
-			location ~ \.php$ {xvukjd
+			location ~ \.php$ {
 				fastcgi_split_path_info ^(.+\.php)(/.+)$;
 				fastcgi_pass unix:/var/run/php5-fpm.sock;
 				fastcgi_index index.php;
