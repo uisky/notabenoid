@@ -41,7 +41,7 @@ class RegisterController extends Controller {
 				$invite->buddy->can_set(User::CAN_LOGIN, 1);
 				$invite->buddy->save(false, ["invited_by", "can"]);
 
-				// Удаляем инвайт, потомучто его использовали
+				// Удаляем инвайт, потому что его использовали
 				$invite->delete();
 
 				// И пиздуем на главную с флагом "fresh meat"

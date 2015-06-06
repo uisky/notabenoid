@@ -6,7 +6,7 @@ class ImportOptionsSubs extends CFormModel {
 		return array(
 			// login and pass are required
 			array("src", "file", "message" => "Пожалуйста, выберите файл.", "maxSize" => 1024 * 1024, "minSize" => 1,
-				"tooLarge" => "Файл слишком большой", "tooSmall" => "Файл подозрительно малелький",
+				"tooLarge" => "Файл слишком большой", "tooSmall" => "Файл подозрительно маленький",
 			),
 			array("format", "required"),
 			array("encoding", "required"),
