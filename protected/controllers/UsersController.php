@@ -290,7 +290,7 @@ class UsersController extends Controller {
 				$invite = RegInvite::gen($user);
 				$invite->setAttributes($_POST["invite"]);
 				if($invite->validate()) {
-					// @todo: обернуть в транзацкию
+					// @todo: обернуть в транзакцию
 					$invite->save();
 
 					$user->n_invites--;

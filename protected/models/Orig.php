@@ -64,7 +64,7 @@ class Orig extends CActiveRecord {
 				self::HAS_ONE, "Bookmark", "orig_id", "on" => "bookmark.user_id = " . Yii::app()->user->id
 			);
 		} else {
-			// дешёвый трюк, расчитанный на то, что планировщик postgresql заметит, что seen.user_id NOT NULL и не будет ничего джойнить вообще
+			// дешёвый трюк, рассчитанный на то, что планировщик postgresql заметит, что seen.user_id NOT NULL и не будет ничего джойнить вообще
 			// нужно как-то изящнее тут поступить.
 			$rel["seen"] = array(
 				self::HAS_ONE, "SeenOrig", "post_id",

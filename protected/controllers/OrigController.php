@@ -398,7 +398,7 @@ class OrigController extends Controller {
 				if($tr_id == 0) {
 					// Добавили новый перевод
 					if($orig->chap->book->membership === null || $orig->chap->book->membership->status === "") {
-						// Встепаем в группу, раз нас там не было
+						// Вступаем в группу, раз нас там не было
 						$orig->chap->book->membership = new GroupMember();
 						$orig->chap->book->membership->book_id = $orig->chap->book->id;
 						$orig->chap->book->membership->user_id = Yii::app()->user->id;

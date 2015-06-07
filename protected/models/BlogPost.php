@@ -46,7 +46,7 @@ class BlogPost extends CActiveRecord {
 		if(!Yii::app()->user->isGuest) {
 			$rel["seen"] = [self::HAS_ONE, "Seen", "post_id", "on" => "seen.user_id = " . intval(Yii::app()->user->id), "select" => ["seen", "n_comments", "track"]];
 		} else {
-			// дешёвый трюк, расчитанный на то, что планировщик postgresql заметит, что seen.user_id NOT NULL и не будет ничего джойнить вообще
+			// дешёвый трюк, рассчитанный на то, что планировщик postgresql заметит, что seen.user_id NOT NULL и не будет ничего джойнить вообще
 			// Вообще для анонимов эту реляцию в контроллере ещё не загружать
 			$rel["seen"] = [self::HAS_ONE, "Seen", "post_id", "on" => "seen.user_id IS NULL", "select" => ["seen", "n_comments", "track"]];
 		}

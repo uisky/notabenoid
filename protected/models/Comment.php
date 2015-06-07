@@ -203,7 +203,7 @@ class Comment extends CActiveRecord {
 			// Под нами есть неудалённые комментарии, помечаем наш, как удалённый
 			Yii::app()->db->createCommand("UPDATE comments SET body = '', user_id = NULL WHERE id = :id")->execute(array("id" => $this->id));
 		} else {
-			// Ниже нас либо нет комментариев вообще, либо толко удалённые. Стираем всю ветку. Последний AND в WHERE - для перестраховки
+			// Ниже нас либо нет комментариев вообще, либо только удалённые. Стираем всю ветку. Последний AND в WHERE - для перестраховки
 			Yii::app()->db->createCommand("DELETE FROM comments WHERE {$field} = :page_id AND mp[0:{$n}] = :mp AND (id = :id OR body = '')")->execute($p);
 		}
 

@@ -4,7 +4,7 @@
 	* Переменные снаружи
 	*
 	* @var BlogPost $post
-	* @var string $placement "index", "post", "talks", "user" - размешение поста (лента, страница поста, мои обсуждения, посты пользователя)
+	* @var string $placement "index", "post", "talks", "user" - размещение поста (лента, страница поста, мои обсуждения, посты пользователя)
 	* @var array $has array("edit" => boolean, "mytalks" => boolean, "bookLink" => boolean)
 	*/
 
