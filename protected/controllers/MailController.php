@@ -21,15 +21,16 @@ class MailController extends Controller {
 	}
 
 	public function actionIndex() {
-		if($_POST["act"] == "rm" || $_POST["act"] == "seen" || $_POST["act"] == "unseen") {
+		if(in_array($_POST["act"], ["rm", "seen", "unseen"])) {
 			if(!is_array($_POST["id"])) $this->redirect("/my/mail");
 
 			$in = "";
-			$params = array(":user_id" => Yii::app()->user->id);
+			$params = [":user_id" => Yii::app()->user->id];
 			foreach($_POST["id"] as $k => $v) {
+				$p = ":id" . (int) $k;
 				if($in) $in .= ", ";
-				$in .= ":id{$k}";
-				$params[":id{$k}"] = (int) $v;
+				$in .= $p;
+				$params[$p] = (int) $v;
 			}
 
 			if($_POST["act"] == "rm") {
