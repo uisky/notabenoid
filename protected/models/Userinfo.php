@@ -47,7 +47,7 @@ class Userinfo extends CActiveRecord {
 
 		if($this->prop_id == 4) {
 			$url = 'http://' . str_replace('http://', '', $this->value);
-			return "<a href='{$url}' target='_blank' rel='nofollow'>{$this->value}</a>";
+			return '<a href="' . htmlentities($url) . '" target="_blank" rel="nofollow">' . $this->value . '</a>';
 		}
 
 		if($this->prop_id == 6) {
