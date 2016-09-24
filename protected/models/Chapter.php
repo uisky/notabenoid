@@ -151,7 +151,7 @@ class Chapter extends CActiveRecord {
 	}
 
 	public function getAhref($area = "") {
-		return "<a href='" . $this->getUrl($area) . "'>{$this->title}</a>";
+		return "<a href='".$this->getUrl($area)."'>".htmlspecialchars($this->title).'</a>';
 	}
 
 	public function getReady() {
