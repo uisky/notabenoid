@@ -10,7 +10,7 @@
 	<?php
 		$here = $this->book->url("invite_decline");
 		if($_SERVER["HTTP_REFERER"] != "" and substr($_SERVER["HTTP_REFERER"], -strlen($here)) != $here) {
-			echo "<a href='{$_SERVER["HTTP_REFERER"]}'>Назад</a> | ";
+      echo '<a href="', htmlspecialchars($_SERVER['HTTP_REFERER'], ENT_QUOTES), '">Назад</a> | ';
 		}
 	?>
 	<a href="/">Главная</a>
