@@ -100,7 +100,11 @@
 	</form>
 
 	<a href="<?=$chap->getUrl("download?format=t&enc=UTF-8"); ?>"><i class="icon-download-alt"></i> Скачать как .txt файл</a><br />
-	<a href="<?=$chap->getUrl("ready?" . $_SERVER["QUERY_STRING"]); ?>" title="Чтобы поделиться ей, нажмите правой кнопкой мыши и выберите &quot;Скопировать адрес ссылки&quot;"><i class="icon-share"></i> Ссылка на эту страницу</a><br />
+  <?php
+  parse_str($_SERVER['QUERY_STRING'], $queryString);
+  $readyLink = 'ready?' . http_build_query($queryString);
+  ?>
+	<a href="<?=$chap->getUrl($readyLink);?>" title="Чтобы поделиться ей, нажмите правой кнопкой мыши и выберите &quot;Скопировать адрес ссылки&quot;"><i class="icon-share"></i> Ссылка на эту страницу</a><br />
 	<a href="<?=$chap->book->url; ?>"><i class="icon-list"></i> Оглавление перевода</a><br />
 	<a href="<?=$chap->getUrl(); ?>"><i class="icon-fire"></i> Интерфейс перевода</a>
 </div>
