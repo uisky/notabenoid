@@ -2,5 +2,5 @@
 	<?=$result["msg"]; ?>
 </p>
 <p>
-	<a href="<?=$_SERVER["HTTP_REFERER"]; ?>">назад</a>
+	<a href="<?=htmlspecialchars($_SERVER['HTTP_REFERER'], ENT_QUOTES); ?>">назад</a>
 </p>
